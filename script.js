@@ -23,6 +23,8 @@ function Win() {
     document.querySelector(".player_pick").id='win';
     gameResult.style.display="block";
     gameWin.style.display="block";
+    gameEqual.style.display="none";
+    gameLoose.style.display="none";
     winStreak++;
     score.innerHTML = winStreak;
 }
@@ -33,6 +35,8 @@ function Loose() {
     document.querySelector(".house_pick").id='win';
     gameResult.style.display="block";
     gameLoose.style.display="block";
+    gameWin.style.display="none";
+    gameEqual.style.display="none";
     winStreak--;
     score.innerHTML = winStreak;
 }
@@ -40,6 +44,8 @@ function Loose() {
 function Equal() {
     gameResult.style.display="block";
     gameEqual.style.display="block";
+    gameWin.style.display="none";
+    gameLoose.style.display="none";
 }
 
 
@@ -65,15 +71,15 @@ function Game(yourChoice){
 	bot = numberToChoice(roll());
 
 	results = decideWinner(human,bot);
-  console.log(results);
-  setTimeout(setScore,3200,results); //setScore(results)
+  
+  	setTimeout(setScore,3200,results); //setScore(results)
 
 	frontEnd(human,bot);
-  setTimeout(function(){
-      document.querySelector('.flip-card').style.display="none";
-      console.log("hi");
-      document.querySelector('.house_result').style.display="block";
-  }, 3000)
+	  setTimeout(function(){
+	      document.querySelector('.flip-card').style.display="none";
+	      console.log("hi");
+	      document.querySelector('.house_result').style.display="block";
+	  }, 3000)
 
 }
 function roll(){
